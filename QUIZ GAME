@@ -1,0 +1,67 @@
+
+#include <stdio.h>
+
+int main() {
+    char questions[5][150] = {
+        "Which function prints output in C?",
+        "Which data type stores whole numbers?",
+        "Which operator checks equality?",
+        "How many times does this loop run: for(i=0; i<3; i++)?",
+        "What is the index of the first array element?"
+    };
+
+    char options[5][4][60] = {
+        {"A. scanf()", "B. printf()", "C. main()", "D. return"},
+        {"A. float", "B. char", "C. int", "D. void"},
+        {"A. =", "B. !=", "C. ==", "D. >"},
+        {"A. 2 times", "B. 3 times", "C. 4 times", "D. 1 time"},
+        {"A. 0", "B. 1", "C. -1", "D. 2"}
+    };
+
+    char answers[5] = {'B', 'C', 'C', 'B', 'A'};
+    char choice;
+    int score = 0;
+    int i;
+
+    printf("================================\n");
+    printf("       C QUIZ CHALLENGE!\n");
+    printf("================================\n");
+    printf("Each correct answer earns 1 point.\n\n");
+
+    for (i = 0; i < 5; i++) {
+        printf("\nQuestion %d: %s\n", i + 1, questions[i]);
+
+        for (int j = 0; j < 4; j++) {
+            printf("%s\n", options[i][j]);
+        }
+
+        printf("Your answer (A/B/C/D): ");
+        scanf(" %c", &choice);
+
+        if (choice >= 'a' && choice <= 'z') {
+            choice = choice - 32;
+        }
+
+        if (choice == answers[i]) {
+            printf("Correct! +1 point\n");
+            score++;
+        } else {
+            printf("Wrong! Correct answer: %c\n", answers[i]);
+        }
+    }
+
+    printf("\n================================\n");
+    printf("          GAME OVER!\n");
+    printf("================================\n");
+    printf("Your score: %d / 5\n", score);
+
+    if (score == 5) {
+        printf("Excellent! You're a C champion!\n");
+    } else if (score >= 3) {
+        printf("Good job! Keep practicing!\n");
+    } else {
+        printf("Keep learning, bro! Try again!\n");
+    }
+
+    return 0;
+}
